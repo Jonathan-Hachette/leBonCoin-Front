@@ -1,5 +1,10 @@
 @import './base.css';
 
+:root {
+  --grey: #627c93;
+  --light-orange: #ffe9de;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -7,4 +12,15 @@
 body {
   font-family: 'Nunito Sans', sans-serif;
   font-optical-sizing: auto;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.container {
+  max-width: 1050px;
+  margin: 0 auto;
+  height: 100%;
 }
