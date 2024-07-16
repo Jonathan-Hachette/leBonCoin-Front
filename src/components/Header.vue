@@ -10,16 +10,30 @@ import { RouterLink } from 'vue-router'
         <RouterLink :to="{ name: 'home' }" class="logoLbc"
           ><img src="../assets/imgs/logo.svg" alt=""
         /></RouterLink>
+
         <div class="middlePart">
-          <button>+ Déposer une annonce</button>
-          <label><input type="text" placeholder="Rechercher sur leboncoin" /></label>
+          <div class="middlePartButton">
+            <a>
+              <font-awesome-icon :icon="['far', 'plus-square']" />
+              Déposer une annonce
+            </a>
+          </div>
+          <div class="middlePartInput">
+            <form>
+              <input type="text" placeholder="Rechercher sur leboncoin" />
+              <button><font-awesome-icon :icon="['fas', 'search']" /></button>
+            </form>
+          </div>
         </div>
-        <a href="">Se connecter</a>
+        <div class="rightPart">
+          <font-awesome-icon :icon="['far', 'user']" />
+          <a href="">Se connecter</a>
+        </div>
       </div>
 
       <div class="bottomBloc">
         <a href="">Immobilier</a><a href="">Véhicules</a><a href="">Locations de vacances</a
-        ><a href="">Emploi</a><a href="">Mode</a><a href="">Maison @ Jardin</a><a href="">Famille</a
+        ><a href="">Emploi</a><a href="">Mode</a><a href="">Maison & Jardin</a><a href="">Famille</a
         ><a href="">Electronique</a><a href="">Loisirs</a><a href="">Autres</a>
       </div>
     </div>
@@ -29,6 +43,7 @@ import { RouterLink } from 'vue-router'
 <style scoped>
 header {
   border: 1px solid var(--grey);
+  height: var(--header-height);
 }
 
 .container {
@@ -38,18 +53,90 @@ header {
   justify-content: space-between;
 }
 
+/* TOP BLOC */
+
 .topBloc {
   /* border: 1px red solid; */
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
+.logoLbc img {
+  /* border: 1px solid red; */
+  height: 30px;
+}
+
+/* MIDDLE BLOC */
+
 .middlePart {
   display: flex;
+  align-items: center;
   gap: 20px;
 }
+
+.middlePart a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--orange);
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+}
+
+.middlePartButton a {
+  font-size: 16px;
+  padding: 11px;
+}
+
+.middlePart a svg {
+  border-radius: 10px;
+}
+
+.middlePart label {
+  border: 1px solid red;
+  text-align: left;
+}
+
+.middlePartInput form {
+  display: flex;
+  background-color: var(--grey-light);
+  padding: 7px;
+  border-radius: 10px;
+  width: 300px;
+}
+.middlePart input {
+  /* border: 1px solid red; */
+  background-color: inherit;
+  border: none;
+  flex: 1;
+  outline: none;
+  font-size: 16px;
+}
+
+.middlePartInput button {
+  display: flex;
+  align-items: center;
+  border: none;
+  padding: 9px;
+}
+
+.middlePartInput svg {
+  color: black;
+  border-radius: 7px;
+}
+
+.rightPart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+/* BOTTOM BLOC */
 
 .bottomBloc {
   /* border: 1px blue solid; */

@@ -28,14 +28,18 @@
               </div>
             </div>
           </div>
-          <button>Rechercher</button>
+          <button class="searchButton">Rechercher</button>
         </form>
+
         <h1>Des millions de petites annonces et autant d'occasions de se faire plaisir</h1>
         <div class="inBetweenBloc">
           <img src="../assets/imgs/onde-corail.svg" alt="" />
           <div>
             <h2>C'est le moment de vendre</h2>
-            <button>+ Déposer ue annonce</button>
+            <a class="inBetweenBtn">
+              <font-awesome-icon :icon="['far', 'plus-square']" />
+              Déposer une annonce
+            </a>
           </div>
           <img src="../assets/imgs/feuille-bleue.svg" alt="" />
         </div>
@@ -48,9 +52,10 @@
 /* Général */
 
 .container {
-  display: flex;
   justify-content: center;
   align-items: center;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  padding-bottom: 40px;
 }
 
 h1 {
@@ -60,19 +65,27 @@ h1 {
   margin: 30px 0;
 }
 
+h2 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
 /* Form */
 
 form {
   margin: 40px 0;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 50px;
+  width: 100%;
 }
 
 form > div {
   /* border: 1px solid red; */
   display: flex;
-  gap: 20px;
+  gap: 40px;
 }
 
 /* PRICE PART */
@@ -91,8 +104,31 @@ form > div {
 
 .priceInputs div {
   display: flex;
+}
+
+.priceInputs label {
+  display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 10px;
+  height: 43px;
+  width: 45px;
+  border: 1px solid var(--grey-med);
+  border-left: none;
+  border-radius: 0 15px 15px 0;
+  font-size: 14px;
+}
+
+.priceInputs div input {
+  height: 43px;
+  width: 150px;
+  border: 1px solid var(--grey-med);
+  border-radius: 15px 0 0 15px;
+  padding-left: 10px;
+}
+
+.pricePart p,
+.sortPart p {
+  font-weight: bold;
 }
 /* SORT PART */
 
@@ -109,13 +145,21 @@ form > div {
   gap: 5px;
 }
 
+.searchButton {
+  background-color: var(--orange);
+  border-radius: 5px;
+  height: 30px;
+  color: white;
+  border: none;
+}
+
 /* INBETWEEN BLOC */
 
 .inBetweenBloc {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--light-orange);
+  background-color: var(--orange-pale);
   border-radius: 20px;
   margin-bottom: 35px;
 }
@@ -126,6 +170,16 @@ form > div {
 
 .inBetweenBloc div {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 20px;
+}
+
+.inBetweenBtn {
+  background-color: var(--orange);
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
 }
 </style>

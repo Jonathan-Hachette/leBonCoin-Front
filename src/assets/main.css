@@ -1,8 +1,17 @@
 @import './base.css';
 
 :root {
+  --orange: #ec5a13;
+  --orange-pale: #ffe9de;
+  --black: #152233;
   --grey: #627c93;
-  --light-orange: #ffe9de;
+  --grey-med: #e6eaee;
+  --grey-light: #f4f9fe;
+  --blue-dark: #094171;
+  --brown: #89380f;
+  --green: #4e9850;
+  --header-height: 110px;
+  --footer-height: 80px;
 }
 
 * {
