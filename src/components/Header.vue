@@ -120,12 +120,13 @@ header {
   display: flex;
   align-items: center;
   border: none;
+  background-color: var(--orange);
   padding: 9px;
+  border-radius: 7px;
 }
 
 .middlePartInput svg {
   color: black;
-  border-radius: 7px;
 }
 
 .rightPart {
