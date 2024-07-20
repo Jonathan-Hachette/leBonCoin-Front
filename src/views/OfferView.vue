@@ -32,26 +32,34 @@ onMounted(async () => {
             <img :src="offerInfos.attributes?.pictures.data[0].attributes.url" alt="" />
           </div>
           <div class="firstColInfos">
-            <p>{{ offerInfos.attributes?.title }}</p>
-            <p>{{ offerInfos.attributes?.price }} €</p>
-            <FormatedDate :offerInfos="offerInfos" />
-            <div class="description">
-              <p>Description</p>
+            <p class="offerTitle">{{ offerInfos.attributes?.title }}</p>
+            <p class="offerPrice">{{ offerInfos.attributes?.price }} €</p>
+            <FormatedDate :offerInfos="offerInfos" class="date" />
+            <div>
+              <h2 class="description">Description</h2>
               <p>{{ offerInfos.attributes?.description }}</p>
             </div>
           </div>
         </div>
         <div class="secondCol">
-          <div>
-            <img
-              :src="offerInfos.attributes?.owner.data.attributes.avatar.data.attributes.url"
-              alt=""
-              class="avatar"
-            />
-            <p class="username">{{ offerInfos.attributes?.owner.data.attributes.username }}</p>
+          <div class="user">
+            <div>
+              <img
+                :src="offerInfos.attributes?.owner.data.attributes.avatar.data.attributes.url"
+                alt=""
+                class="avatar"
+              />
+              <p class="username">{{ offerInfos.attributes?.owner.data.attributes.username }}</p>
+            </div>
+            <p class="identity">
+              <font-awesome-icon :icon="['fas', 'check-double']" />
+              Pièce d'itentité vérifiée
+            </p>
+            <p>
+              <font-awesome-icon :icon="['far', 'clock']" />
+              Répond généralement en 1 heure
+            </p>
           </div>
-          <p>Pièce d'itentité vérifiée</p>
-          <p>Répond généralement en 1 heure</p>
           <div class="offerCta">
             <a href="">Acheter</a>
             <a href="">Message</a>
@@ -64,25 +72,132 @@ onMounted(async () => {
 
 <style scoped>
 /* General */
+.container {
+  padding: 30px 0;
+}
+
 .offerBloc {
-  display: flex;
-  justify-content: center;
-}
-
-/* First column */
-
-.firstCol > div img {
-  width: 260px;
-  height: 350px;
-}
-
-/* Second column */
-
-.secondCol > div {
   display: flex;
   justify-content: center;
   gap: 20px;
 }
 
+/* First column */
+.firstCol {
+  /* border: 1px solid red; */
+  width: 67%;
+}
+
+.firstCol > div img {
+  width: 100%;
+  height: 350px;
+  object-fit: contain;
+}
+
+.offerTitle {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 30px 0;
+}
+
+.offerPrice {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.date {
+  margin-top: 20px;
+}
+
+.description {
+  font-size: 18px;
+  font-weight: bold;
+  border-top: 1px solid var(--grey-med);
+  margin: 50px 0 25px;
+  padding-top: 20px;
+}
+
+/* Second column */
+
+.secondCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  height: 375px;
+  width: 33%;
+  box-shadow: 0 0 5px var(--grey-med);
+  border-radius: 2px;
+  /* border: 1px solid black; */
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* border: 1px solid green; */
+}
+
+.user div:nth-child(1) {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  /* border: 1px solid black; */
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 70px;
+}
+
+.username {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.identity {
+  font-size: 12px;
+  color: var(--brown);
+  background-color: var(--orange-pale);
+  border-radius: 10px;
+  padding: 4px 7px;
+  align-self: flex-start;
+}
+
+svg {
+  margin-right: 3px;
+}
+
 /* CTA */
+.offerCta {
+  margin-top: 15px;
+  padding: 15px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  border-top: 1px solid var(--grey-med);
+}
+
+.offerCta a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  width: 100%;
+  height: 45px;
+  border-radius: 15px;
+}
+
+.offerCta a:nth-child(1) {
+  background-color: var(--orange);
+}
+
+.offerCta a:nth-child(2) {
+  background-color: var(--blue-dark);
+}
 </style>

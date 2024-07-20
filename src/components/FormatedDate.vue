@@ -16,4 +16,9 @@ const formatedDate = computed(() => {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+p {
+  font-size: 12px;
+  color: var(--grey);
+}
+</style>
