@@ -3,8 +3,9 @@ const props = defineProps({
   id: String
 })
 
+import { useCycleList } from '@vueuse/core'
 import axios from 'axios'
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
 import FormatedDate from '@/components/FormatedDate.vue'
 
@@ -16,28 +17,57 @@ onMounted(async () => {
       `https://site--strapileboncoin--2m8zk47gvydr.code.run/api/offers/${props.id}?populate[0]=pictures&populate[1]=owner.avatar`
     )
     offerInfos.value = data.data
-    console.log(data)
+    // console.log(data)
   } catch (error) {
     console.log(error)
+  }
+})
+
+const cycleList = computed(() => {
+  if (offerInfos.value.attributes.pictures.data) {
+    const { state, next, prev } = useCycleList(offerInfos.value.attributes.pictures.data)
+
+    return { state, next, prev }
+  } else {
+    return {}
   }
 })
 </script>
 
 <template>
-  <main>
+  <h1 v-if="!offerInfos.attributes" class="loading">Chargement en cours . . .</h1>
+  <main v-else>
     <div class="container">
       <div class="offerBloc">
         <div class="firstCol">
-          <div>
-            <img :src="offerInfos.attributes?.pictures.data[0].attributes.url" alt="" />
+          <div class="imgsCarousel">
+            <font-awesome-icon
+              :icon="['fas', 'chevron-left']"
+              @click="cycleList.prev()"
+              v-if="offerInfos.attributes.pictures.data?.length > 1"
+            />
+            <img :src="cycleList.state.value.attributes.url" alt="" />
+            <font-awesome-icon
+              :icon="['fas', 'chevron-right']"
+              @click="cycleList.next()"
+              v-if="offerInfos.attributes.pictures.data?.length > 1"
+            />
           </div>
           <div class="firstColInfos">
             <p class="offerTitle">{{ offerInfos.attributes?.title }}</p>
-            <p class="offerPrice">{{ offerInfos.attributes?.price }} €</p>
+            <p class="offerPrice">
+              {{ new Intl.NumberFormat().format(offerInfos.attributes?.price) }} €
+            </p>
             <FormatedDate :offerInfos="offerInfos" class="date" />
             <div>
               <h2 class="description">Description</h2>
               <p>{{ offerInfos.attributes?.description }}</p>
+            </div>
+            <div>
+              <p class="location">
+                <font-awesome-icon :icon="['fas', 'map-marker-alt']" />
+                Agon-Coutainville (50230)
+              </p>
             </div>
           </div>
         </div>
@@ -94,6 +124,16 @@ onMounted(async () => {
   object-fit: contain;
 }
 
+.imgsCarousel {
+  display: flex;
+  align-items: center;
+}
+
+.imgsCarousel svg {
+  font-size: 18px;
+  cursor: pointer;
+}
+
 .offerTitle {
   font-size: 24px;
   font-weight: bold;
@@ -112,6 +152,12 @@ onMounted(async () => {
 .description {
   font-size: 18px;
   font-weight: bold;
+  border-top: 1px solid var(--grey-med);
+  margin: 50px 0 25px;
+  padding-top: 20px;
+}
+
+.location {
   border-top: 1px solid var(--grey-med);
   margin: 50px 0 25px;
   padding-top: 20px;

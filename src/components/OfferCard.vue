@@ -22,7 +22,7 @@ const props = defineProps({
       </div>
       <img :src="offerInfos.url" alt="Offer image" />
       <p>{{ offerInfos.attributes.title }}</p>
-      <p>{{ offerInfos.attributes.price }} €</p>
+      <p>{{ new Intl.NumberFormat().format(offerInfos.attributes.price) }} €</p>
     </div>
     <div class="secondPart">
       <div>

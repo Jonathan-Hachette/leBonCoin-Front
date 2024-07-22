@@ -32,18 +32,47 @@ import { RouterLink } from 'vue-router'
       </div>
 
       <div class="bottomBloc">
-        <a href="">Immobilier</a><a href="">Véhicules</a><a href="">Locations de vacances</a
-        ><a href="">Emploi</a><a href="">Mode</a><a href="">Maison & Jardin</a><a href="">Famille</a
-        ><a href="">Electronique</a><a href="">Loisirs</a><a href="">Autres</a>
+        <a href="">Immobilier</a>
+        <font-awesome-icon :icon="['fas', 'circle']" />
+        <a href="">Véhicules</a>
+        <font-awesome-icon :icon="['fas', 'circle']" />
+
+        <a href="">Locations de vacances</a>
+        <font-awesome-icon :icon="['fas', 'circle']" />
+
+        <a href="">Emploi</a>
+        <font-awesome-icon :icon="['fas', 'circle']" />
+
+        <a href="">Mode</a>
+        <font-awesome-icon :icon="['fas', 'circle']" />
+
+        <a href="">Maison & Jardin</a>
+        <font-awesome-icon :icon="['fas', 'circle']" />
+
+        <a href="">Famille</a>
+        <font-awesome-icon :icon="['fas', 'circle']" />
+
+        <a href="">Electronique</a>
+        <font-awesome-icon :icon="['fas', 'circle']" />
+
+        <a href="">Loisirs</a>
+        <font-awesome-icon :icon="['fas', 'circle']" />
+
+        <a href="">Autres</a>
       </div>
     </div>
   </header>
 </template>
 
 <style scoped>
+/* GENERAL */
+
 header {
   border: 1px solid var(--grey);
   height: var(--header-height);
+  position: sticky;
+  top: 0;
+  background-color: white;
 }
 
 .container {
@@ -67,7 +96,7 @@ header {
   height: 30px;
 }
 
-/* MIDDLE BLOC */
+/* MIDDLE PART */
 
 .middlePart {
   display: flex;
@@ -107,6 +136,7 @@ header {
   border-radius: 10px;
   width: 300px;
 }
+
 .middlePart input {
   /* border: 1px solid red; */
   background-color: inherit;
@@ -143,5 +173,10 @@ header {
   /* border: 1px blue solid; */
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.bottomBloc svg {
+  font-size: 2px;
 }
 </style>
