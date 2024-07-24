@@ -26,8 +26,10 @@ import { RouterLink } from 'vue-router'
           </div>
         </div>
         <div class="rightPart">
-          <font-awesome-icon :icon="['far', 'user']" />
-          <a href="">Se connecter</a>
+          <RouterLink :to="{ name: 'signup' }">
+            <font-awesome-icon :icon="['far', 'user']" />
+            Se connecter
+          </RouterLink>
         </div>
       </div>
 
@@ -159,12 +161,18 @@ header {
   color: black;
 }
 
-.rightPart {
+/* RIGHT PART */
+.rightPart a {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 5px;
+  font-size: 12px;
+}
+
+.rightPart svg {
+  font-size: 15px;
 }
 
 /* BOTTOM BLOC */

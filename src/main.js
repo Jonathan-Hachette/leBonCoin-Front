@@ -1,6 +1,6 @@
 import './assets/main.css'
 
-import { createApp } from 'vue'
+import { createApp, ref } from 'vue'
 import App from './App.vue'
 import router from './router'
 
@@ -14,6 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import { faClock, faHeart, faPlusSquare, faUser } from '@fortawesome/free-regular-svg-icons'
 import {
+  faArrowRight,
   faCheckDouble,
   faChevronLeft,
   faChevronRight,
@@ -33,10 +34,22 @@ library.add(
   faCircle,
   faMapMarkerAlt,
   faChevronLeft,
-  faChevronRight
+  faChevronRight,
+  faArrowRight
 )
 
 const app = createApp(App).component('font-awesome-icon', FontAwesomeIcon)
 
 app.use(router)
+
+const userToken = ref('')
+
+const changeToken = (token) => {
+  userToken.value = token
+}
+
+app.provide('GlobalStore', {
+  userToken: userToken,
+  changeToken: changeToken
+})
 app.mount('#app')
